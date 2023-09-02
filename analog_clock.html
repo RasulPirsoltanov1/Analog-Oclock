@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analog Clock</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+    <body>
+    <div class="test">
+        <svg id="clock_svg" height="800" width="800">
+            <circle class="solid-line" stroke-width="2" cy="400" cx="400" r="350" fill="none" stroke="red"></circle>
+            <circle class="small-lines" cy="400" cx="400" r="340" fill="none"></circle>
+            <circle class="big-lines" cy="400" cx="400" r="350" fill="none"></circle>
+            <line id="second" x1="400" x2="400" y1="400" y2="50" stroke="pink" stroke-width="2"></line>
+            <line id="minute" x1="400" x2="400" y1="400" y2="150" stroke="pink" stroke-width="5"></line>
+            <line id="hour" x1="400" x2="400" y1="400" y2="230" stroke="pink" stroke-width="10"></line>
+            <div id="numbers">
+            </div>
+        </svg>
+    </div>
+</body>
+<script src="main.js">
+</script>
+
+</html>
