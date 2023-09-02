@@ -1,16 +1,19 @@
 
-let nums=document.createElement("div");
-nums.setAttribute("fill","red");
-nums.innerText="12";
-nums.id="text";
+let clock_svg = document.getElementById("numbers");
+for (let i = 1; i < 13; i++) {
+    let nums2 = document.createElement("div");
+    nums2.setAttribute("fill", "red");
+    nums2.innerText = `${i}`;
+    nums2.id = "text";
+    let ang =(Math.PI*2)/12*i - Math.PI/2;
+    nums2.style.left = `${Math.cos(ang)*300+400}px`;
+    nums2.style.top =  `${Math.sin(ang)*300+400}px`;
+    let clock_svg = document.getElementById("numbers");
+    clock_svg.appendChild(nums2);
+}
 
-let clock_svg=document.getElementById("numbers");
-clock_svg.appendChild(nums);
 
-
-
-
-function setFirstTime(){
+function setFirstTime() {
     let now = new Date();
     let hour = now.getHours();
     let second = now.getSeconds();
