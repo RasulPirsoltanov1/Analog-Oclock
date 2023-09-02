@@ -1,5 +1,5 @@
 
-let clock_svg = document.getElementById("numbers");
+let clock_svg = document.getElementById("numbers2");
 for (let i = 1; i < 13; i++) {
     let nums2 = document.createElement("div");
     nums2.setAttribute("fill", "red");
@@ -8,7 +8,7 @@ for (let i = 1; i < 13; i++) {
     let ang =(Math.PI*2)/12*i - Math.PI/2;
     nums2.style.left = `${Math.cos(ang)*300+400}px`;
     nums2.style.top =  `${Math.sin(ang)*300+400}px`;
-    let clock_svg = document.getElementById("numbers");
+    let clock_svg = document.getElementById("numbers2");
     clock_svg.appendChild(nums2);
 }
 

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analog Clock</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+        }
+
+        .container {
+            margin: auto;
+        }
+
+        body {
+            background-color: #0c091d;
+            height: 100%;
+        }
+
+        .test {
+            height: 800px;
+            width: 900px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .small-lines {
+            stroke: rgba(114, 196, 255, 0.5);
+            stroke-width: 20;
+            stroke-dasharray: 2, 33.58666666666667;
+        }
+
+        .big-lines {
+            stroke: rgba(114, 196, 255, 0.9);
+            stroke-width: 50;
+            stroke-dasharray: 8, 175.1666;
+        }
+
+        #second {
+            transform-origin: 400px 400px;
+        }
+
+        #minute {
+            transform-origin: 400px 400px;
+        }
+
+        #hour {
+            transform-origin: 400px 400px;
+        }
+
+        #text {
+            font-size: 50px;
+            position: absolute;
+            color: aliceblue;
+            top: 10%;
+            right: 47%;
+        }
+
+        #numbers {
+            justify-content: center;
+            position: absolute;
+            align-items: center;
+            margin-right: 86px;
+            top: -27px;
+            left: 35px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="test">
+            <svg id="clock_svg" height="800" width="800">
+                <circle class="solid-line" stroke-width="2" cy="400" cx="400" r="350" fill="none" stroke="rgba(12,32,231,0.5)"></circle>
+                <circle class="small-lines" cy="400" cx="400" r="340" fill="none"></circle>
+                <circle class="big-lines" cy="400" cx="400" r="350" fill="none"></circle>
+                <line id="second" x1="400" x2="400" y1="400" y2="50" stroke="blue" stroke-width="2"></line>
+                <line id="minute" x1="400" x2="400" y1="400" y2="150" stroke="red" stroke-width="5"></line>
+                <line id="hour" x1="400" x2="400" y1="400" y2="230" stroke="green" stroke-width="10"></line>
+                <div id="numbers">
+                </div>
+            </svg>
+        </div>
+    </div>
+
+</body>
+<script>
+
+    for (let i = 1; i < 13; i++) {
+        let nums2 = document.createElement("div");
+        nums2.setAttribute("fill", "red");
+        nums2.innerText = `${i}`;
+        nums2.id = "text";
+        let ang = (Math.PI * 2) / 12 * i - Math.PI / 2;
+        nums2.style.left = `${Math.cos(ang) * 300 + 400}px`;
+        nums2.style.top = `${Math.sin(ang) * 300 + 400}px`;
+        let clock_svg = document.getElementById("numbers");
+        clock_svg.appendChild(nums2);
+    }
+
+
+    function setFirstTime() {
+        let now = new Date();
+        let hour = now.getHours();
+        let second = now.getSeconds();
+        let minute = now.getMinutes();
+        var hourDegree = 360 / 12 * hour + 360 / 12 * (minute / 60);
+        var secondDegree = 360 / 60 * second;
+        var minuteDegree = 360 / 60 * minute;
+        let hourLine = document.getElementById("hour");
+        hourLine.style.transform = `rotate(${hourDegree}deg)`;
+        let secondLine = document.getElementById("second");
+        secondLine.style.transform = `rotate(${secondDegree}deg)`;
+        let minuteLine = document.getElementById("minute");
+        minuteLine.style.transform = `rotate(${minuteDegree}deg)`;
+    }
+    setFirstTime();
+
+    setInterval(() => {
+        let now = new Date();
+        let hour = now.getHours();
+        let second = now.getSeconds();
+        let minute = now.getMinutes();
+        var hourDegree = 360 / 12 * hour + 360 / 12 * (minute / 60);
+        var secondDegree = 360 / 60 * second;
+        var minuteDegree = 360 / 60 * minute;
+        let hourLine = document.getElementById("hour");
+        hourLine.style.transform = `rotate(${hourDegree}deg)`;
+        let secondLine = document.getElementById("second");
+        secondLine.style.transform = `rotate(${secondDegree}deg)`;
+        let minuteLine = document.getElementById("minute");
+        minuteLine.style.transform = `rotate(${minuteDegree}deg)`;
+    }, 1000);
+
+</script>
+
+</html>

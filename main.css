@@ -11,9 +11,11 @@ body {
 }
 
 .test {
+    margin: auto;
     height: 800px;
     width: 900px;
     display: flex;
+    height: 100vh;
     align-items: center;
     justify-content: center;
 }
@@ -51,9 +53,14 @@ body {
 }
 #numbers{
     justify-content: center;
-    position: absolute;
+    position: relative;
     align-items: center;
     margin-right: 86px;
     top: -27px;
     left: 35px;
+}
+#numbers2{
+    position: absolute;
+    top: -29px;
+    left: -18px;
 }
